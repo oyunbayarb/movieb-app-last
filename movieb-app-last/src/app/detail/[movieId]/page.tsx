@@ -3,10 +3,8 @@ import React from "react";
 
 function Detail() {
   return (
-    <div className="flex w-screen">
-      <div>
-        <OneMovieDetailPage />
-      </div>
+    <div className="flex w-screen p-20 h-fit">
+      <OneMovieDetailPage />
     </div>
   );
 }

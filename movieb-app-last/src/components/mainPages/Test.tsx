@@ -18,7 +18,7 @@ type MovieDataType = {
   poster_path: string;
   release_date: string;
 };
-export const NowPlayingMovieSlidePage = () => {
+export const TestPage = () => {
   const [nowPlayingSlideData, setNowPlayingSlideData] = useState<
     MovieDataType[]
   >([]);
@@ -36,20 +36,15 @@ export const NowPlayingMovieSlidePage = () => {
 
   return (
     <div>
-      <Carousel className="w-screen h-[600px]">
-        <CarouselContent className="w-screen h-[600px]">
-          {nowPlayingSlideData.slice(0, 5).map((element, index) => {
-            return (
-              <CarouselItem>
-                <img
-                  className="w-full h-full"
-                  src={`https://image.tmdb.org/t/p/original${element.backdrop_path}`}
-                ></img>
-              </CarouselItem>
-            );
-          })}
-          <Ellipsis className="absolute" />;
+      <Carousel className="relative translate-0.5">
+        <CarouselContent className="w-full h-[600px]">
+          <CarouselItem className="bg-amber-500"></CarouselItem>
+          <CarouselItem className="bg-blue-500">...</CarouselItem>
+          <CarouselItem className="bg-cyan-500">...</CarouselItem>
+          <CarouselItem className="bg-fuchsia-500">...</CarouselItem>
+          <CarouselItem className="bg-emerald-400">...</CarouselItem>
         </CarouselContent>
+        <Ellipsis className="absolute" />
         <CarouselPrevious className="flex absolute left-10 size-10" />
         <CarouselNext className="flex absolute right-10 size-10" />
       </Carousel>
