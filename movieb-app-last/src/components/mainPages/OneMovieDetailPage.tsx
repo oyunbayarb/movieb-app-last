@@ -3,8 +3,9 @@
 import { axiosInstance } from "@/lib/utils";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Dot } from "lucide-react";
+import { Badge, Dot } from "lucide-react";
 import { Star } from "lucide-react";
+import { OneMovieDetailCredit } from "../elements/OneMovieDetailCredit";
 
 type MovieDataType = {
   adult: boolean;
@@ -79,15 +80,13 @@ export const OneMovieDetailPage = () => {
           ></img>
         </div>
         <div>
-          {/* <div>{OneMovieDetailPage.element.genres}</div> */}
+          <div className="w-[90px] h-[20px]">
+            <p></p>
+          </div>
           <p>{oneMovieDetaildata.overview}</p>
         </div>
-        <div>
-          <p></p>
-          <p></p>
-          <p></p>
-        </div>
       </div>
+      <OneMovieDetailCredit></OneMovieDetailCredit>
     </div>
   );
 };
