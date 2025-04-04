@@ -3,4 +3,4 @@ export * from "./JustOneMovieCard";
 export * from "./Footer";
 export * from "./MovieGenreComponent";
 export * from "./OneMovieDetailCredit";
-export * from "./CastingTeamMemberCard";
+export * from "./OneMovieSimilarItemPage";

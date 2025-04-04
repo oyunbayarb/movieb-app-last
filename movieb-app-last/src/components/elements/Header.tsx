@@ -1,6 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import { Search } from "lucide-react";
-import { MovieGenreBox } from "./MovieGenreComponent";
+import { GenreComponentMovies } from "./MovieGenreComponent";
 
 export const Header = () => {
   return (
@@ -9,8 +9,7 @@ export const Header = () => {
       <div className="w-fit flex gap-3">
         <div className="w-[97px] flex gap-2 rounded-md border-1 border-[#E4E4E7] shadow-sm p-3">
           <ChevronDown />
-
-          <MovieGenreBox />
+          <GenreComponentMovies />
         </div>
         <div className="w-[379px] flex gap-[10px] rounded-md border-1 border-[#E4E4E7] shadow-sm p-3">
           <Search />

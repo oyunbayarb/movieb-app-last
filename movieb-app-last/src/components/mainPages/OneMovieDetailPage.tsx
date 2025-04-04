@@ -3,9 +3,10 @@
 import { axiosInstance } from "@/lib/utils";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Badge, Dot } from "lucide-react";
+import { Dot } from "lucide-react";
 import { Star } from "lucide-react";
 import { OneMovieDetailCredit } from "../elements/OneMovieDetailCredit";
+import { OneMovieSimilarMovies } from "../elements";
 
 type MovieDataType = {
   adult: boolean;
@@ -79,14 +80,12 @@ export const OneMovieDetailPage = () => {
             src={`https://image.tmdb.org/t/p/original${oneMovieDetaildata?.backdrop_path}`}
           ></img>
         </div>
-        <div>
-          <div className="w-[90px] h-[20px]">
-            <p></p>
-          </div>
+        <div className="flex flex-col gap-5">
           <p>{oneMovieDetaildata.overview}</p>
+          <OneMovieDetailCredit></OneMovieDetailCredit>
+          <OneMovieSimilarMovies></OneMovieSimilarMovies>
         </div>
       </div>
-      <OneMovieDetailCredit></OneMovieDetailCredit>
     </div>
   );
 };

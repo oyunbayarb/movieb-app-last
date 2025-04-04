@@ -1,89 +1,37 @@
+"use client";
+
+import { axiosInstance } from "@/lib/utils";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { ChevronRight } from "lucide-react";
+
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { ChevronRight } from "lucide-react";
 
-export const MovieGenreBox = () => {
-  const GenreListData = [
-    {
-      id: 28,
-      name: "Action",
-    },
-    {
-      id: 12,
-      name: "Adventure",
-    },
-    {
-      id: 16,
-      name: "Animation",
-    },
-    {
-      id: 35,
-      name: "Comedy",
-    },
-    {
-      id: 80,
-      name: "Crime",
-    },
-    {
-      id: 99,
-      name: "Documentary",
-    },
-    {
-      id: 18,
-      name: "Drama",
-    },
-    {
-      id: 10751,
-      name: "Family",
-    },
-    {
-      id: 14,
-      name: "Fantasy",
-    },
-    {
-      id: 36,
-      name: "History",
-    },
-    {
-      id: 27,
-      name: "Horror",
-    },
-    {
-      id: 10402,
-      name: "Music",
-    },
-    {
-      id: 9648,
-      name: "Mystery",
-    },
-    {
-      id: 10749,
-      name: "Romance",
-    },
-    {
-      id: 878,
-      name: "Science Fiction",
-    },
-    {
-      id: 10770,
-      name: "TV Movie",
-    },
-    {
-      id: 53,
-      name: "Thriller",
-    },
-    {
-      id: 10752,
-      name: "War",
-    },
-    {
-      id: 37,
-      name: "Western",
-    },
-  ];
+type genreDataType = {
+  id: number;
+  name: string;
+};
+
+export const GenreComponentMovies = () => {
+  const { genresId } = useParams();
+
+  const [genreMoviesData, setGenreMoviesData] = useState<genreDataType[]>([]);
+
+  const fetchgenreMoviesData = async () => {
+    const { data } = await axiosInstance.get(
+      `/genre/movie/list?language=en-US`
+    );
+    setGenreMoviesData(data.genres);
+  };
+
+  useEffect(() => {
+    fetchgenreMoviesData();
+  }, []);
+
   return (
     <div>
       <Popover>
@@ -94,9 +42,12 @@ export const MovieGenreBox = () => {
             See lists of movies by genre
           </p>
           <div className="flex-wrap flex gap-[5px]">
-            {GenreListData.map((element) => {
+            {genreMoviesData.map((element, index) => {
               return (
-                <button className="min-w-[115px] flex justify-evenly p-[2px] border-2 border-[#E4E4E7] rounded-full">
+                <button
+                  key={index}
+                  className="min-w-[115px] flex justify-evenly p-[2px] border-2 border-[#E4E4E7] rounded-full"
+                >
                   {element.name}
                   <ChevronRight />
                 </button>
